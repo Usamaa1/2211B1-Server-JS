@@ -1,7 +1,8 @@
 
 import { MongoClient, ServerApiVersion } from 'mongodb';
 import 'dotenv/config'
-const uri = process.env.MONGODB_CONNECTION_STRING;
+const uri = "mongodb://localhost:27017";
+// const uri = process.env.MONGODB_CONNECTION_STRING;
 
 console.log(uri);
 
