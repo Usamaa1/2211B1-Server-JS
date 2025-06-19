@@ -40,4 +40,4 @@ process.on('SIGINT',async()=>{
 })
 
 export const database = client.db('2211B1DB')
-export {client};
+// export {client};

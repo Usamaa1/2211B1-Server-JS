@@ -10,5 +10,6 @@ postRoutes.get('/searchPost',searchPost)
 postRoutes.delete('/post/:id',deletePost)
 postRoutes.put('/post/:id',updatePost)
 
+
 export default postRoutes;
 

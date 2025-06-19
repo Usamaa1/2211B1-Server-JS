@@ -1,6 +1,7 @@
 import express from 'express'
-import {client} from './connection/connection.mjs'
+// import {client} from './connection/connection.mjs'
 import postRoutes from './routes/postRoute.mjs'
+import imageRoutes from './routes/imageRoute.mjs'
 
 const app = express()
 const port = 3000
@@ -11,7 +12,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/v1',postRoutes);
-
+app.use('/api/v1',imageRoutes)
 
 
 
