@@ -16,7 +16,7 @@ export const userRegister = async (req, res) => {
 
     if (isEmail) return res.send({ errorMessage: "Email already Exist" })
 
-    const hashPassword = bcrypt.hashSync(password, 10);
+    const hashPassword = await bcrypt.hash(password, 10);
 
     const user = new User({ name, email, password: hashPassword })
 
@@ -47,8 +47,11 @@ export const userLogin = async (req, res) => {
     const isUser = await User.findOne({ email })
     console.log("isUser",isUser)
     console.log(isUser);
+    if (!isUser) return res.status(401).send({ errorMessage: "User not Exists" })
+
+
     if (isUser) {
-      const isPasswordMatched = bcrypt.compareSync(password, isUser.password);
+      const isPasswordMatched = await bcrypt.compare(password, isUser.password);
 
       if(isPasswordMatched){
         
@@ -67,7 +70,7 @@ export const userLogin = async (req, res) => {
       }
       else
       {
-        res.send({failedMessage: "User Login Failed"})
+        res.status(401).send({failedMessage: "User Login Failed"})
       }
 
 
